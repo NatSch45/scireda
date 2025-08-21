@@ -29,8 +29,11 @@ export function RegisterPage() {
     if (!emailRegex.test(email)) nextErrors.email = 'Veuillez saisir un email valide.'
     if (!username || username.length < 3)
       nextErrors.username = "Le nom d'utilisateur doit faire au moins 3 caractères."
-    if (password.length < 6)
-      nextErrors.password = 'Le mot de passe doit contenir au moins 6 caractères.'
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/
+    if (password.length < 8)
+      nextErrors.password = 'Le mot de passe doit contenir au moins 8 caractères.'
+    else if (!passwordRegex.test(password))
+      nextErrors.password = 'Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.'
     if (password !== confirmPassword)
       nextErrors.confirm = 'Les mots de passe ne correspondent pas.'
     setErrors(nextErrors)
@@ -97,6 +100,18 @@ export function RegisterPage() {
           />
           {errors.password && (
             <p id="password-error" className="mt-1 text-sm text-red-400">{errors.password}</p>
+          )}
+          {password && !errors.password && (
+            <div className="mt-2 text-xs text-slate-400">
+              <p>Le mot de passe doit contenir :</p>
+              <ul className="list-disc list-inside mt-1 space-y-1">
+                <li className={password.length >= 8 ? 'text-green-400' : 'text-slate-400'}>Au moins 8 caractères</li>
+                <li className={/[a-z]/.test(password) ? 'text-green-400' : 'text-slate-400'}>Une minuscule</li>
+                <li className={/[A-Z]/.test(password) ? 'text-green-400' : 'text-slate-400'}>Une majuscule</li>
+                <li className={/\d/.test(password) ? 'text-green-400' : 'text-slate-400'}>Un chiffre</li>
+                <li className={/[@$!%*?&]/.test(password) ? 'text-green-400' : 'text-slate-400'}>Un caractère spécial (@$!%*?&)</li>
+              </ul>
+            </div>
           )}
         </div>
         <div>

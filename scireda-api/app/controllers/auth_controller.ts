@@ -10,7 +10,7 @@ export default class AuthController {
         const registerSchema = vine.object({
             email: vine.string().email(),
             username: vine.string().minLength(3),
-            password: vine.string().minLength(6),
+            password: vine.string().minLength(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/),
         })
 
         try {
@@ -53,7 +53,7 @@ export default class AuthController {
 
         const loginSchema = vine.object({
             email: vine.string().email(),
-            password: vine.string().minLength(6),
+            password: vine.string().minLength(8),
         })
 
         try {
