@@ -1,5 +1,6 @@
 import env from '#start/env'
 import { defineConfig } from '@adonisjs/lucid'
+import fs from 'fs'
 
 const dbConfig = defineConfig({
   connection: 'postgres',
@@ -9,7 +10,7 @@ const dbConfig = defineConfig({
       connection: {
         connectionString: env.get('DATABASE_URL'),
         ssl: {
-          rejectUnauthorized: false,
+          ca: fs.readFileSync('/app/certs/supabase-ca.crt').toString(),
         },
       },
       migrations: {
