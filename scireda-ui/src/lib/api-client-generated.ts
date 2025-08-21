@@ -7,7 +7,7 @@ import {
   Note, NoteUpsert,
   LoginRequest, RegisterRequest, User,
   GetNotesParams, DeleteFolderParams,
-  ApiResponse, ApiError
+  ApiResponse
 } from './api-types';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3333/scireda-api';
@@ -42,7 +42,7 @@ class ApiClient {
     };
 
     if (this.token) {
-      headers['Authorization'] = `Bearer ${this.token}`;
+      (headers as any)['Authorization'] = `Bearer ${this.token}`;
     }
 
     const response = await fetch(url, {

@@ -10,6 +10,7 @@ export function useAuth() {
   const clearAuth = useAuthStore((s) => s.clearAuth)
 
   const meQuery = useMe({
+    queryKey: ['me'],
     enabled: !!token && !storedUser, // Only fetch if we have token but no stored user
     retry: 1,
     staleTime: 5 * 60 * 1000, // 5 minutes

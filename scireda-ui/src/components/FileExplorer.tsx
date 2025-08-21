@@ -721,7 +721,7 @@ function SubFolderItem({
               selectedNoteId={selectedNoteId}
               onCreateNote={onCreateNote}
               onCreateFolder={onCreateFolder}
-              onDeleteFolder={() => onDeleteFolder(nestedFolder)}
+              onDeleteFolder={() => onDeleteFolder()}
               onDeleteNote={onDeleteNote}
               level={level + 1}
             />
