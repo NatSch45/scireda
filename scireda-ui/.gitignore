@@ -89,6 +89,13 @@ Thumbs.db
 
 # TypeScript
 *.tsbuildinfo
+*.d.ts
+!src/**/*.d.ts
+
+# Compiled config files (keep only .ts versions)
+vite.config.js
+playwright.config.js
+vitest.setup.js
 
 # Temporary folders
 tmp/

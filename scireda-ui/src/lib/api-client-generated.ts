@@ -10,7 +10,7 @@ import {
   ApiResponse
 } from './api-types';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3333/scireda-api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || import.meta.env.REACT_APP_API_URL || 'http://localhost:3333/scireda-api';
 
 class ApiClient {
   private baseUrl: string;

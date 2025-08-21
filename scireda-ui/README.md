@@ -45,6 +45,11 @@ npm run e2e
 - `src/features/{notes,folders,networks}`: pages placeholder
 - `src/pages/HomePage.tsx`
 
+### Configuration API
+L'URL de l'API peut être configurée via la variable d'environnement :
+- `VITE_API_URL` (recommandé pour Vite)
+- Par défaut : `http://localhost:3333/scireda-api`
+
 ### Authentification
 - Token JWT Bearer stocké dans `localStorage`
 - Interceptor Axios ajoute `Authorization: Bearer <token>`
