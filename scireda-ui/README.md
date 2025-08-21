@@ -54,5 +54,3 @@ L'URL de l'API peut être configurée via la variable d'environnement :
 - Token JWT Bearer stocké dans `localStorage`
 - Interceptor Axios ajoute `Authorization: Bearer <token>`
 - Redirection automatique vers `/login` pour les routes protégées (`/notes`, `/folders`, `/networks`)
-
-
