@@ -48,4 +48,4 @@ ENV CACHE_VIEWS="true" \
     HOST="0.0.0.0" \
     PORT="3000" \
     SESSION_DRIVER="cookie"
-CMD [ "node", "/app/build/server.js" ]
+CMD [ "node", "/app/build/bin/server.js" ]
