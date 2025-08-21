@@ -1,0 +1,25 @@
+# Architecture
+- Stack: React 18 + Vite + TypeScript strict + React Router.
+- Gestion des données: TanStack Query pour la synchro serveur; Zustand pour état local.
+- Requêtes API: axios avec interceptors (auth et gestion erreurs).
+- Validation: schémas Zod à l’entrée/sortie des appels API.
+- Structure: un dossier par feature (feature/*) avec api.ts, hooks, pages et composants.
+- Pas de logique métier dans les composants UI.
+
+# Authentification
+- Token Bearer dans Authorization header.
+- Stockage sécurisé dans localStorage.
+- Interceptor axios pour refresh token si 401 (si flux dispo).
+- Redirection automatique vers /login si non authentifié.
+
+# UI
+- TailwindCSS + Headless UI ou Radix primitives.
+- Palette: bleu foncé (#0D1B2A) comme couleur primaire, couleur d’accent (#FF7F50 ou autre à définir).
+- Thème sombre par défaut, sobre, espacé, moderne.
+- Accessibilité: labels, roles ARIA, focus states visibles.
+
+# Qualité
+- ESLint + Prettier configurés (ne pas désactiver les règles sans raison).
+- Tests: Vitest + Testing Library (unitaires) et Playwright (E2E).
+- Composants testés dès leur création.
+- Scripts npm: dev, build, preview, lint, test, e2e.
