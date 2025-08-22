@@ -9,6 +9,19 @@ export default defineConfig({
     globals: true,
     css: true,
     exclude: ['tests/e2e/**', 'node_modules/**'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html', 'lcov'],
+      exclude: [
+        'node_modules/**',
+        'tests/**',
+        '**/*.d.ts',
+        '**/*.config.*',
+        'dist/**',
+        'build/**',
+        'coverage/**',
+      ],
+    },
   },
 })
 

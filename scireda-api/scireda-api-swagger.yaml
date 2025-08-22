@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: |
     Private API of Scireda web application
-  version: "0.1.0"
+  version: '0.1.0'
   title: Scireda
   termsOfService: 'http://swagger.io/terms/'
   contact:
@@ -24,7 +24,6 @@ tags:
     description: Notes handling (CRUD)
 
 paths:
-
   /auth/register:
     post:
       tags:
@@ -157,7 +156,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/NetworkCreation"
+              $ref: '#/components/schemas/NetworkCreation'
       responses:
         '201':
           description: The new network has successfully been created*
@@ -194,7 +193,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/NetworkUpdate"
+              $ref: '#/components/schemas/NetworkUpdate'
       responses:
         '200':
           description: The network have been successfully updated
@@ -223,7 +222,7 @@ paths:
             type: integer
             format: int64
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       responses:
         '204':
           description: The network has been successfully deleted
@@ -246,14 +245,14 @@ paths:
       description: Create a new folder in the wanted network
       operationId: createFolder
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       requestBody:
         description: The new data to update
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/FolderCreation"
+              $ref: '#/components/schemas/FolderCreation'
       responses:
         '200':
           description: The folder has been successfully created
@@ -275,7 +274,7 @@ paths:
       description: Retrieve top-level folders from a given network
       operationId: getTopLevelFolders
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       parameters:
         - name: networkId
           in: query
@@ -307,7 +306,7 @@ paths:
       description: Retrieve a folder and all the notes or folders it contains
       operationId: getFolderContent
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       parameters:
         - name: id
           in: path
@@ -336,7 +335,7 @@ paths:
       description: Delete a folder from its id
       operationId: deleteFolder
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       parameters:
         - name: id
           in: path
@@ -370,7 +369,7 @@ paths:
       description: Retrieve all top-level notes of a given network
       operationId: getTopLevelNotesByNetwork
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       parameters:
         - name: networkId
           in: query
@@ -402,7 +401,7 @@ paths:
       description: Retrieve notes contained in the wanted folder
       operationId: getNotesByFolder
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       parameters:
         - name: folderId
           in: query
@@ -433,7 +432,7 @@ paths:
       description: Create a new note
       operationId: createNote
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       requestBody:
         description: Data of the note to create
         required: true
@@ -462,7 +461,7 @@ paths:
       description: Update a note
       operationId: updateNote
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       parameters:
         - name: id
           in: path
@@ -498,7 +497,7 @@ paths:
       description: Delete a note from its id
       operationId: deleteNote
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       parameters:
         - name: id
           in: path
@@ -646,8 +645,8 @@ components:
           type: integer
           format: int64
 
-#  parameters:
-#  requestBodies:
+  #  parameters:
+  #  requestBodies:
   responses:
     BadRequest:
       description: The request is malformed or misses some data
