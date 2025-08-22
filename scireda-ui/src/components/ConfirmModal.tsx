@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useFocusTrap } from '../hooks/useFocusTrap';
 
 interface ConfirmModalProps {
   isOpen: boolean;
@@ -21,6 +22,7 @@ export function ConfirmModal({
   onCancel,
   variant = 'default'
 }: ConfirmModalProps) {
+  const focusTrapRef = useFocusTrap(isOpen);
   // Close modal on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -56,12 +58,20 @@ export function ConfirmModal({
       />
       
       {/* Modal */}
-      <div className="relative bg-slate-800 rounded-lg shadow-xl border border-slate-700 max-w-md w-full mx-4 animate-in zoom-in-95 duration-200">
+      <div 
+        ref={focusTrapRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+        className="relative bg-slate-800 rounded-lg shadow-xl border border-slate-700 max-w-md w-full mx-4 animate-in zoom-in-95 duration-200"
+      >
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-slate-700">
-          <h2 className="text-lg font-semibold text-white">{title}</h2>
+          <h2 id="modal-title" className="text-lg font-semibold text-white">{title}</h2>
           <button
             onClick={onCancel}
+            aria-label="Fermer la modale"
             className="text-slate-400 hover:text-white transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,7 +82,7 @@ export function ConfirmModal({
         
         {/* Content */}
         <div className="p-6">
-          <p className="text-slate-300 whitespace-pre-line leading-relaxed">
+          <p id="modal-description" className="text-slate-300 whitespace-pre-line leading-relaxed">
             {message}
           </p>
         </div>

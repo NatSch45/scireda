@@ -1,6 +1,7 @@
 import { FormEvent, useMemo, useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from './useAuth'
+import { LiveAnnouncer } from '../../components/LiveAnnouncer'
 
 export function LoginPage() {
   const { login, isLoggingIn } = useAuth()
@@ -92,14 +93,26 @@ export function LoginPage() {
             {successMessage}
           </div>
         )}
-        {formError && <p className="text-red-400 text-sm">{formError}</p>}
+        {formError && (
+          <>
+            <p className="text-red-400 text-sm">{formError}</p>
+            <LiveAnnouncer message={formError} priority="assertive" />
+          </>
+        )}
+        {successMessage && <LiveAnnouncer message={successMessage} />}
         <button
           type="submit"
           disabled={isLoggingIn}
+          aria-describedby={isLoggingIn ? 'login-status' : undefined}
           className="w-full rounded bg-accent text-black py-2 font-medium disabled:opacity-50"
         >
           {isLoggingIn ? 'Connexion…' : 'Se connecter'}
         </button>
+        {isLoggingIn && (
+          <div id="login-status" aria-live="polite" className="sr-only">
+            Connexion en cours
+          </div>
+        )}
       </form>
     </section>
   )

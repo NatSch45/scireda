@@ -36,7 +36,15 @@ export function AppLayout() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-900 text-white">
-      <header className="border-b border-slate-700 bg-slate-800/50 backdrop-blur">
+      {/* Skip link for keyboard navigation */}
+      <a 
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-accent text-black px-4 py-2 rounded z-50 font-medium"
+      >
+        Aller au contenu principal
+      </a>
+      
+      <header role="banner" className="border-b border-slate-700 bg-slate-800/50 backdrop-blur">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <Link to="/" className="text-xl font-bold text-accent">
@@ -44,16 +52,22 @@ export function AppLayout() {
             </Link>
             
             {token && (
-              <nav className="flex items-center gap-4 text-slate-300">
+              <nav aria-label="Navigation principale" className="flex items-center gap-4 text-slate-300">
                 <Link 
                   to="/networks" 
-                  className="hover:text-white transition-colors"
+                  aria-current={location.pathname.startsWith('/networks') ? 'page' : undefined}
+                  className={`hover:text-white transition-colors ${
+                    location.pathname.startsWith('/networks') ? 'text-accent font-medium' : ''
+                  }`}
                 >
                   Mes Réseaux
                 </Link>
                 <Link 
                   to="/me" 
-                  className="hover:text-white transition-colors"
+                  aria-current={location.pathname === '/me' ? 'page' : undefined}
+                  className={`hover:text-white transition-colors ${
+                    location.pathname === '/me' ? 'text-accent font-medium' : ''
+                  }`}
                 >
                   Mon Profil
                 </Link>
@@ -126,7 +140,7 @@ export function AppLayout() {
         </div>
       </header>
       
-      <main className="flex-1">
+      <main role="main" id="main-content" className="flex-1">
         <Outlet />
       </main>
     </div>

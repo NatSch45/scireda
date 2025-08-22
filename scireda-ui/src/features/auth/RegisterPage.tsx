@@ -1,6 +1,7 @@
 import { FormEvent, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from './useAuth'
+import { LiveAnnouncer } from '../../components/LiveAnnouncer'
 
 export function RegisterPage() {
   const { register, isRegistering } = useAuth()
@@ -130,14 +131,25 @@ export function RegisterPage() {
             <p id="confirm-error" className="mt-1 text-sm text-red-400">{errors.confirm}</p>
           )}
         </div>
-        {formError && <p className="text-red-400 text-sm">{formError}</p>}
+        {formError && (
+          <>
+            <p className="text-red-400 text-sm">{formError}</p>
+            <LiveAnnouncer message={formError} priority="assertive" />
+          </>
+        )}
         <button
           type="submit"
           disabled={isRegistering}
+          aria-describedby={isRegistering ? 'register-status' : undefined}
           className="w-full rounded bg-accent text-black py-2 font-medium disabled:opacity-50"
         >
           {isRegistering ? 'Création…' : 'Créer le compte'}
         </button>
+        {isRegistering && (
+          <div id="register-status" aria-live="polite" className="sr-only">
+            Création du compte en cours
+          </div>
+        )}
       </form>
     </section>
   )
