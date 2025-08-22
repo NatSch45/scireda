@@ -1,4 +1,4 @@
-## Scireda UI
+# Scireda UI
 
 Projet React 18 + Vite + TypeScript strict, TailwindCSS, TanStack Query, Zustand, Router, Axios, Zod.
 
