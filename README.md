@@ -486,7 +486,7 @@ flyctl releases -a scireda-api
 node ace migration:rollback --batch=1
 
 # Rollback vers version spécifique
-node ace migration:rollback --to=20240101000000
+node ace migration:rollback --to=20250101000000
 ```
 
 #### Procédure d'Incident
@@ -501,7 +501,7 @@ node ace migration:rollback --to=20240101000000
 
 #### Format Changelog
 ```markdown
-## [1.2.0] - 2024-01-15
+## [1.2.0] - 2025-01-15
 
 ### Added
 - Nouvelle fonctionnalité X
@@ -541,15 +541,13 @@ node ace migration:rollback --to=20240101000000
 ## 📞 Support et Maintenance
 
 ### Contacts Équipe
-- **Développement** : equipe-dev@scireda.com
-- **Ops/Infrastructure** : ops@scireda.com
-- **Support** : support@scireda.com
+- **Développement** : nathan.schneider4505@gmail.com
 
 ### Resources Techniques
-- **Repository** : https://github.com/org/scireda
+- **Repository** : https://github.com/NatSch45/scireda
 - **CI/CD** : GitHub Actions
-- **Monitoring** : Fly.io Dashboard
-- **Qualité** : SonarCloud
+- **Monitoring** : Fly.io Dashboard / Grafana
+- **Qualité** : SonarCloud / Lighthouse
 
 ### Documentation Complémentaire
 - **API Reference** : `/scireda-api-swagger.yaml`
@@ -558,5 +556,4 @@ node ace migration:rollback --to=20240101000000
 
 ---
 
-*Dernière mise à jour : Janvier 2024*
 *Version documentation : 1.0.0*
